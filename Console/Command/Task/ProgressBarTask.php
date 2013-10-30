@@ -1,4 +1,7 @@
 <?php
+
+App::uses('AppShell', 'Console/Command');
+
 /*
  * CakePHP shell task for doing a simple progress bar
  * Copyright (c) 2010 Matt Curry
@@ -17,7 +20,7 @@
  * @package       progress_bar
  * @subpackage    progress_bar.vendors.shells.tasks
  */
-class ProgressBarTask extends Shell {
+class ProgressBarTask extends AppShell {
 
 /**
  * Console Width
@@ -129,11 +132,12 @@ class ProgressBarTask extends Shell {
  *
  * @param mixed $message A string or a an array of strings to output
  * @param integer $newlines Number of newlines to append
+ * @param integer $level The message's output level
  * @return integer Returns the number of bytes returned from writing to stdout.
  * @access public
  */
-	public function out($message = null, $newLines = 0) {
-		return parent::out($message, $newLines);
+	public function out($message = null, $newlines = 0, $level = Shell::NORMAL) {
+		return parent::out($message, $newLines, $level);
 	}
 
 /**
