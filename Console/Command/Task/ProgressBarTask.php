@@ -137,7 +137,7 @@ class ProgressBarTask extends AppShell {
  * @access public
  */
 	public function out($message = null, $newlines = 0, $level = Shell::NORMAL) {
-		return parent::out($message, $newLines, $level);
+		return parent::out($message, $newlines, $level);
 	}
 
 /**
