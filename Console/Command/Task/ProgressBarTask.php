@@ -1,8 +1,5 @@
 <?php
-
-App::uses('AppShell', 'Console/Command');
-
-/*
+/**
  * CakePHP shell task for doing a simple progress bar
  * Copyright (c) 2010 Matt Curry
  * www.PseudoCoder.com
@@ -10,15 +7,16 @@ App::uses('AppShell', 'Console/Command');
  *
  * @author      Matt Curry <matt@pseudocoder.com>
  * @license     MIT
- *
  */
+
+App::uses('AppShell', 'Console/Command');
 
 /**
  * ProgressBarTask class
  *
- * @uses          Shell
- * @package       progress_bar
- * @subpackage    progress_bar.vendors.shells.tasks
+ * @uses          AppShell
+ * @package       ProgressBar
+ * @subpackage    ProgressBar.Console.Command.Task
  */
 class ProgressBarTask extends AppShell {
 
@@ -26,7 +24,6 @@ class ProgressBarTask extends AppShell {
  * Console Width
  *
  * @var int
- * @access public
  */
 	public $terminalWidth = null;
 
@@ -34,7 +31,6 @@ class ProgressBarTask extends AppShell {
  * message displayed during updates
  *
  * @var string ''
- * @access public
  */
 	public $message = '';
 
@@ -42,7 +38,6 @@ class ProgressBarTask extends AppShell {
  * Maximum value on the bar
  *
  * @var int
- * @access public
  */
 	public $total = 100;
 
@@ -50,7 +45,6 @@ class ProgressBarTask extends AppShell {
  * Size
  *
  * @var int
- * @access public
  */
 	public $size = 25;
 
@@ -58,7 +52,6 @@ class ProgressBarTask extends AppShell {
  * Amount Completed
  *
  * @var int
- * @access public
  */
 	public $done = 0;
 
@@ -66,7 +59,6 @@ class ProgressBarTask extends AppShell {
  * Start Time
  *
  * @var mixed
- * @access public
  */
 	public $startTime = null;
 
@@ -74,7 +66,6 @@ class ProgressBarTask extends AppShell {
  * String length for the previous line.  Used to overwrite hanging chars/
  *
  * @var int
- * @access public
  */
 	public $strLenPrevLine = null;
 
@@ -82,7 +73,6 @@ class ProgressBarTask extends AppShell {
  * Execute the task - nothing to do by default
  *
  * @return void
- * @access public
  */
 	public function execute() {
 	}
@@ -94,7 +84,6 @@ class ProgressBarTask extends AppShell {
  * if you don't know the exact number of steps it's going to take
  *
  * @return void
- * @access public
  */
 	public function finish() {
 		if ($this->done < $this->total) {
@@ -107,7 +96,6 @@ class ProgressBarTask extends AppShell {
  *
  * @param string $message ''
  * @return void
- * @access public
  */
 	public function message($message = '') {
 		$this->message = $message;
@@ -116,8 +104,8 @@ class ProgressBarTask extends AppShell {
 /**
  * Increment the progress
  *
+ * @param integer $inc increment value
  * @return void
- * @access public
  */
 	public function next($inc = 1) {
 		$this->done += $inc;
@@ -134,7 +122,6 @@ class ProgressBarTask extends AppShell {
  * @param integer $newlines Number of newlines to append
  * @param integer $level The message's output level
  * @return integer Returns the number of bytes returned from writing to stdout.
- * @access public
  */
 	public function out($message = null, $newlines = 0, $level = Shell::NORMAL) {
 		return parent::out($message, $newlines, $level);
@@ -143,16 +130,9 @@ class ProgressBarTask extends AppShell {
 /**
  * Set the values and output
  *
- * @return void
- * @access public
- */
-/**
- * set method
- *
  * @param string $done Amount completed
  * @param string $doneSize bar size
  * @return void
- * @access public
  */
 	public function set($done = null, $doneSize = null) {
 		if ($done) {
@@ -202,8 +182,8 @@ class ProgressBarTask extends AppShell {
  * Start a progress bar
  *
  * @param string $total Total value of the progress bar
+ * @param boolean $clear append one line
  * @return void
- * @access public
  */
 	public function start($total, $clear = true) {
 		$this->total = $total;
@@ -219,7 +199,6 @@ class ProgressBarTask extends AppShell {
  * Calculate remaining time in a nice format
  *
  * @return void
- * @access public
  */
 	protected function _niceRemaining() {
 		$now = time();
@@ -247,7 +226,6 @@ class ProgressBarTask extends AppShell {
  * @TODO can you get windows to tell you the size of the terminal?
  * @param mixed $width null
  * @return void
- * @access protected
  */
 	protected function _setTerminalWidth($width = null) {
 		if ($width === null) {
@@ -261,5 +239,5 @@ class ProgressBarTask extends AppShell {
 		$this->size = min(max(4, $width / 10), $this->size);
 		$this->terminalWidth = $width;
 	}
+
 }
-?>
