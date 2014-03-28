@@ -13,12 +13,14 @@
 A shell task for showing a simple progress bar.
 
 /* Instructions */
- 1. Download the plugin to app/plugins/progress_bar.
- 2. Include the task in your shell.
-		var $tasks = array('ProgressBar');
- 3. Start the progress bar by calling ProgressBar::start with the total number of whatever you are processing.
+ 1. Download the plugin to app/Plugin/ProgressBar
+ 2. Load the new plugin
+ 		CakePlugin::load('ProgressBar');
+ 3. Include the task in your shell.
+		public $tasks = array('ProgressBar');
+ 4. Start the progress bar by calling ProgressBar::start with the total number of whatever you are processing.
  		$this->ProgressBar->start(count($loops));
- 4. Within each loop:
+ 5. Within each loop:
  		$this->ProgressBar->next();
  		Or to set it to any point:
  		$this->ProgressBar->set($done);
