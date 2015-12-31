@@ -1,0 +1,26 @@
+{
+	"name": "cakedc/progress_bar",
+	"description": "CakePHP Progress Bar Shell Task",
+	"type": "cakephp-plugin",
+	"keywords": ["cakephp", "progress bar", "shell"],
+	"homepage": "http://www.cakedc.com/",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Cake Development Corporation",
+			"email": "team@cakedc.com",
+			"homepage": "http://www.cakedc.com"
+		}
+	],
+	"support": {
+		"email": "team@cakedc.com",
+		"source": "https://github.com/CakeDC/progress_bar"
+	},
+	"require": {
+		"php": ">=5.3.0",
+		"composer/installers": "*"
+	},
+	"extra": {
+		"installer-name": "ProgressBar"
+	}
+}
